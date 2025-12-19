@@ -204,42 +204,32 @@ Multi-agent payment processing system using **LangGraph** with specialized agent
                               └─────────┬─────────┘
                                         │
                                         ▼
-                    ┌───────────────────────────────────────┐
-                    │          SUPERVISOR AGENT             │
-                    │   • Routes to specialist agents       │
-                    │   • Aggregates findings               │
-                    │   • Makes final recommendation        │
-                    └───────────────────┬───────────────────┘
-                                        │
-               ┌────────────────────────┼────────────────────────┐
-               │                        │                        │
-               ▼                        ▼                        ▼
     ┌──────────────────┐    ┌──────────────────┐    ┌──────────────────┐
     │   COMPLIANCE     │    │ FRAUD DETECTION  │    │ RISK ASSESSMENT  │
     │     AGENT        │    │     AGENT        │    │     AGENT        │
     │                  │    │                  │    │                  │
     │ • Sanctions      │    │ • Pattern        │    │ • Risk scoring   │
-    │ • AML check      │    │   analysis       │    │ • Policy match   │
-    │ • Regulatory     │    │ • Velocity       │    │ • Historical     │
-    │   rules          │    │ • Anomaly        │    │   context        │
+    │ • AML check      │    │   analysis       │    │ • Combines       │
+    │ • Regulatory     │    │ • Velocity       │    │   findings from  │
+    │   rules          │    │ • Anomaly        │    │   other agents   │
+    │        │         │    │        │         │    │                  │
+    │        ▼         │    │        ▼         │    │  (no tools)      │
+    │ ┌─────────────┐  │    │ ┌─────────────┐  │    │                  │
+    │ │SanctionsDB  │  │    │ │ CustomerDB  │  │    │                  │
+    │ │PolicyDB     │  │    │ └─────────────┘  │    │                  │
+    │ └─────────────┘  │    │     TOOL         │    │                  │
+    │    TOOLS         │    │                  │    │                  │
     └────────┬─────────┘    └────────┬─────────┘    └────────┬─────────┘
                │                        │                        │
                └────────────────────────┼────────────────────────┘
                                         │
                                         ▼
                     ┌───────────────────────────────────────┐
-                    │        AGGREGATED FINDINGS            │
-                    │   • Combined risk assessment          │
-                    │   • Compliance status                 │
-                    │   • Fraud indicators                  │
-                    └───────────────────┬───────────────────┘
-                                        │
-                                        ▼
-                    ┌───────────────────────────────────────┐
-                    │        SHARED TOOLS                   │
-                    │   • Policy retrieval                  │
-                    │   • Customer lookup                   │
-                    │   • Sanctions check                   │
+                    │          SUPERVISOR AGENT             │
+                    │   • Aggregates all findings           │
+                    │   • Identifies conflicts              │
+                    │   • Makes final recommendation        │
+                    │   (no tools, synthesizes only)        │
                     └───────────────────┬───────────────────┘
                                         │
                                         ▼
