@@ -52,8 +52,10 @@ A production-oriented RAG pipeline using **LlamaIndex** with document ingestion,
 ```
 
 **Key features:**
-- Document ingestion and chunking
-- Vector-based retrieval with ChromaDB
+- Document ingestion and chunking (chunk_size=450, chunk_overlap=50)
+- HuggingFace BGE-small-en-v1.5 embeddings (384 dimensions)
+- Persistent vector storage with ChromaDB
+- Ollama + Llama 3.1 8B for local inference
 - Grounded generation with context
 - Evaluation and observability hooks
 
@@ -270,7 +272,7 @@ ollama pull llama3.1:8b
 
 ```bash
 # For LlamaIndex notebooks (1)
-pip install llama-index chromadb llama-index-llms-ollama llama-index-embeddings-huggingface
+pip install llama-index chromadb llama-index-llms-ollama llama-index-embeddings-huggingface llama-index-vector-stores-chroma
 
 # For LangChain notebooks (2, 3)
 pip install langchain langchain-ollama pydantic
