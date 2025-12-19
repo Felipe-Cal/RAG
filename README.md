@@ -78,23 +78,23 @@ Payment-safe workflow using **LangChain** with multi-step reasoning and safety g
                                         │
                                         ▼
                     ┌───────────────────────────────────────┐
-                    │     STEP 1: POLICY RETRIEVAL          │
+                    │     STEP 1: RISK CLASSIFICATION       │
+                    │     Classify transaction into         │
+                    │     risk categories (LLM)             │
+                    └───────────────────┬───────────────────┘
+                                        │
+                                        ▼
+                    ┌───────────────────────────────────────┐
+                    │     STEP 2: POLICY RETRIEVAL          │
                     │     Retrieve relevant payment and     │
                     │     compliance policies               │
                     └───────────────────┬───────────────────┘
                                         │
                                         ▼
                     ┌───────────────────────────────────────┐
-                    │     STEP 2: RISK CLASSIFICATION       │
-                    │     Classify transaction into         │
-                    │     risk categories                   │
-                    └───────────────────┬───────────────────┘
-                                        │
-                                        ▼
-                    ┌───────────────────────────────────────┐
                     │     STEP 3: EXPLANATION GENERATION    │
                     │     Generate structured explanation   │
-                    │     for flagged transactions          │
+                    │     for flagged transactions (LLM)    │
                     └───────────────────┬───────────────────┘
                                         │
                                         ▼
